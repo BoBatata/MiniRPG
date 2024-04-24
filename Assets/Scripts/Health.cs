@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public static Health instance;
     [SerializeField] private float health;
 
     public event Action OnHurt;
     public event Action OnDie;
 
     private bool isDead;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void TakeDamage(int damageTakenValue)
     {
@@ -27,5 +33,10 @@ public class Health : MonoBehaviour
         {
             OnHurt?.Invoke();
         }
+    }
+
+    public float GetPlayerHeath()
+    {
+        return health;
     }
 }

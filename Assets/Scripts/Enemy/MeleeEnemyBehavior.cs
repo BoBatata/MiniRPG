@@ -10,8 +10,8 @@ public class MeleeEnemyBehavior : BaseEnemy
     [SerializeField] private float chaseSpeed = 5;
 
     [Header("Melee Attack properties")]
-    [SerializeField] private Vector3 attackPositionOffset;
     [SerializeField] private Vector3 attackRange;
+    [SerializeField] private Transform attackPoint;
 
     private float walkCooldownTimer;
     private float attackCooldownTimer;
@@ -71,7 +71,7 @@ public class MeleeEnemyBehavior : BaseEnemy
 
         Vector3 playerPosition = detector.GetCollidersInDetectAreaSphere()[0].GetComponent<Transform>().position;
 
-        Collider[] detectedPlayerColliders = detector.GetCollidersInDetectAreaBox(transform.position + attackPositionOffset, attackRange);
+        Collider[] detectedPlayerColliders = detector.GetCollidersInDetectAreaBox(attackPoint.position, attackRange);
 
         bool isPlayerDetected = detectedPlayerColliders.Length > 0;
         if (isPlayerDetected)
@@ -129,6 +129,6 @@ public class MeleeEnemyBehavior : BaseEnemy
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireCube(transform.position + attackPositionOffset, attackRange);
+        Gizmos.DrawWireCube(attackPoint.position, attackRange);
     }
 }
