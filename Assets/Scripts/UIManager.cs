@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     private float xpParaUpar;
     private int nivel;
 
-    private void Awake()
+    private void Start()
     {
         vida = Health.instance.GetPlayerHeath();
         xpParaUpar = XPHandler.instance.GetXPParaUpar();
