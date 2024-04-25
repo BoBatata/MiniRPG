@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public static Health instance;
-    [SerializeField] private float health;
+    private float health;
 
     public event Action OnHurt;
     public event Action OnDie;
@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        health = GameManager.instance.HeathPlayer() ;
     }
 
     public void TakeDamage(int damageTakenValue)

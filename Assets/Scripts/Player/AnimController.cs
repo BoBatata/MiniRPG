@@ -5,7 +5,7 @@ public class AnimController : MonoBehaviour
     private Animator animator;
     private Health health;
 
-    private bool isMoving =>  GameManager.Instance.inputManager.MoveDirection != Vector2.zero;
+    private bool isMoving =>  GameManager.instance.inputManager.MoveDirection != Vector2.zero;
 
     private void Awake()
     {
@@ -15,9 +15,9 @@ public class AnimController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.inputManager.OnAttack += HandleAttackAnim;
-        GameManager.Instance.inputManager.OnParry += HandleParryAnim;
-        GameManager.Instance.inputManager.OnRun += HandleRunAnim;
+        GameManager.instance.inputManager.OnAttack += HandleAttackAnim;
+        GameManager.instance.inputManager.OnParry += HandleParryAnim;
+        GameManager.instance.inputManager.OnRun += HandleRunAnim;
         health.OnHurt += PlayHurtAnim;
         health.OnDie += PlayDieAnim;
     }

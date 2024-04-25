@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.inputManager.OnParry += HandleParry;
-        GameManager.Instance.inputManager.OnRun += HandleRunVelocity;
+        GameManager.instance.inputManager.OnParry += HandleParry;
+        GameManager.instance.inputManager.OnRun += HandleRunVelocity;
     }
 
     private void FixedUpdate()
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMove()
     {
-        Vector2 inputData = GameManager.Instance.inputManager.MoveDirection;
+        Vector2 inputData = GameManager.instance.inputManager.MoveDirection;
         moveDirection.x = inputData.x;
         moveDirection.z = inputData.y;
         Vector3 cameraRelativeMovement =
@@ -106,12 +106,12 @@ public class PlayerController : MonoBehaviour
     private void HandleDeath()
     {
         this.gameObject.layer = LayerMask.NameToLayer("Default");
-        GameManager.Instance.inputManager.DisableGameplayInput();     
+        GameManager.instance.inputManager.DisableGameplayInput();     
     }
 
     private void CallMenu()
     {
-        GameManager.Instance.MenuGame();
+        GameManager.instance.MenuGame();
     }
 
     private void Attack()
