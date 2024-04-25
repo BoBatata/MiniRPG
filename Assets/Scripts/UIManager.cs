@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
         vida = Health.instance.GetPlayerHeath();
         xpParaUpar = XPHandler.instance.GetXPParaUpar();
         sliderLife.maxValue = vida;
-        sliderXP.maxValue = xpParaUpar;
     }
 
     private void Update()
@@ -32,6 +31,7 @@ public class UIManager : MonoBehaviour
         xpParaUpar = XPHandler.instance.GetXPParaUpar();
     
         sliderLife.value = vida;
+        sliderXP.maxValue = xpParaUpar;
         sliderXP.value = xpAtual;
         nivelText.text = nivel.ToString();
         xpText.text = xpAtual + "/" + xpParaUpar;

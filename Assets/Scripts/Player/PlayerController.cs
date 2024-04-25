@@ -106,7 +106,12 @@ public class PlayerController : MonoBehaviour
     private void HandleDeath()
     {
         this.gameObject.layer = LayerMask.NameToLayer("Default");
-        GameManager.Instance.inputManager.DisableGameplayInput();
+        GameManager.Instance.inputManager.DisableGameplayInput();     
+    }
+
+    private void CallMenu()
+    {
+        GameManager.Instance.MenuGame();
     }
 
     private void Attack()
