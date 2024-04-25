@@ -5,15 +5,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{
-    [SerializeField] private TextMeshProUGUI vidaText;
+{  
     [SerializeField] private TextMeshProUGUI nivelText;
     [SerializeField] private TextMeshProUGUI xpText;
+    [SerializeField] private Slider sliderLife;
+    [SerializeField] private Slider sliderXP;
 
     private float vida;
     private float xpAtual;
     private float xpParaUpar;
     private int nivel;
+
+    private void Awake()
+    {
+        vida = Health.instance.GetPlayerHeath();
+        xpParaUpar = XPHandler.instance.GetXPParaUpar();
+        sliderLife.maxValue = vida;
+        sliderXP.maxValue = xpParaUpar;
+    }
 
     private void Update()
     {
@@ -21,9 +30,10 @@ public class UIManager : MonoBehaviour
         xpAtual = XPHandler.instance.GetXPAtual();
         nivel = XPHandler.instance.GetNivel();
         xpParaUpar = XPHandler.instance.GetXPParaUpar();
-
-        vidaText.text = "Vida: " + vida;
-        nivelText.text = "Nível: " + nivel;
+    
+        sliderLife.value = vida;
+        sliderXP.value = xpAtual;
+        nivelText.text = nivel.ToString();
         xpText.text = xpAtual + "/" + xpParaUpar;
     }
 }
